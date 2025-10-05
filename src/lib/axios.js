@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "https://call-app-gfzb.onrender.com/api";
+const BASE_URL = "https://call-app-wheat.vercel.app/api";
 
 export const axiosInstance = axios.create({
   baseURL: BASE_URL,
