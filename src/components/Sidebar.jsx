@@ -1,24 +1,12 @@
-import { Link, useLocation, useNavigate } from "react-router";
+
+import { Link, useLocation } from "react-router";
 import useAuthUser from "../hooks/useAuthUser";
 import { BellIcon, HomeIcon, ShipWheelIcon, UsersIcon } from "lucide-react";
-import { useClerk, UserButton, useUser } from "@clerk/clerk-react";
-import useLogout from "../hooks/useLogout";
-import Button from "./Button";
 
 const Sidebar = () => {
   const { authUser } = useAuthUser();
   const location = useLocation();
   const currentPath = location.pathname;
-  const isChatPage = location.pathname?.startsWith("/chat");
-  const { user } = useUser();
-  const { openSignIn } = useClerk();
-  const navigate = useNavigate();
-
-  const { logoutMutation } = useLogout();
-
-  const handleLogin = async () => {
-    await openSignIn({ fallbackRedirectUrl: window.location.href });
-  };
 
   return (
     <aside className="w-64 bg-base-200 border-r border-base-300 hidden lg:flex flex-col h-screen sticky top-0">
@@ -26,7 +14,7 @@ const Sidebar = () => {
         <Link to="/" className="flex items-center gap-2.5">
           <ShipWheelIcon className="size-9 text-primary" />
           <span className="text-3xl font-bold font-mono bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary  tracking-wider">
-            CallApp
+            Streamify
           </span>
         </Link>
       </div>
@@ -38,7 +26,7 @@ const Sidebar = () => {
             }`}
         >
           <HomeIcon className="size-5 text-base-content opacity-70" />
-          <span>Trang chủ</span>
+          <span>Home</span>
         </Link>
 
         <Link
@@ -47,7 +35,7 @@ const Sidebar = () => {
             }`}
         >
           <UsersIcon className="size-5 text-base-content opacity-70" />
-          <span>Bạn bè</span>
+          <span>Friends</span>
         </Link>
 
         <Link
@@ -56,7 +44,7 @@ const Sidebar = () => {
             }`}
         >
           <BellIcon className="size-5 text-base-content opacity-70" />
-          <span>Thông báo</span>
+          <span>Notifications</span>
         </Link>
       </nav>
 
@@ -64,25 +52,15 @@ const Sidebar = () => {
       <div className="p-4 border-t border-base-300 mt-auto">
         <div className="flex items-center gap-3">
           <div className="avatar">
-            {
-              // login
-              !user ? (
-                <Button
-                  primary
-                  className="h-10 w-20"
-                  onClick={handleLogin}>
-                  Login
-                </Button>
-              ) : (
-                <UserButton />
-              )
-            }
+            <div className="w-10 rounded-full">
+              <img src={authUser?.profilePic} alt="User Avatar" />
+            </div>
           </div>
           <div className="flex-1">
             <p className="font-semibold text-sm">{authUser?.fullName}</p>
             <p className="text-xs text-success flex items-center gap-1">
               <span className="size-2 rounded-full bg-success inline-block" />
-              Đang hoạt động
+              Online
             </p>
           </div>
         </div>

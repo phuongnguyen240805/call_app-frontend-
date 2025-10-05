@@ -3,29 +3,28 @@ import { LANGUAGE_TO_FLAG } from "../constants";
 
 const FriendCard = ({ friend }) => {
   return (
-    <div className="card bg-base-200 hover:shadow-md transition-shadow h-full min-h-[230px] flex flex-col">
-      <div className="card-body p-4 flex flex-col h-full">
+    <div className="card bg-base-200 hover:shadow-md transition-shadow">
+      <div className="card-body p-4">
         {/* USER INFO */}
         <div className="flex items-center gap-3 mb-3">
-          <div className="avatar size-12 shrink-0">
+          <div className="avatar size-12">
             <img src={friend.profilePic} alt={friend.fullName} />
           </div>
           <h3 className="font-semibold truncate">{friend.fullName}</h3>
         </div>
 
-        <div className="flex flex-row gap-2 mb-3 min-h-[32px] items-center">
-          <span className="badge badge-secondary text-xs flex items-center whitespace-nowrap">
+        <div className="flex flex-wrap gap-1.5 mb-3">
+          <span className="badge badge-error text-xs">
             {getLanguageFlag(friend.nativeLanguage)}
-            <span className="ml-1 truncate">Native: {friend.nativeLanguage}</span>
+            Bản xứ: {friend.nativeLanguage}
           </span>
-          <span className="badge badge-outline text-xs flex items-center whitespace-nowrap">
+          <span className="badge badge-outline text-xs">
             {getLanguageFlag(friend.learningLanguage)}
-            <span className="ml-1 truncate">Learning: {friend.learningLanguage}</span>
+            Học hỏi: {friend.learningLanguage}
           </span>
         </div>
 
-        <div className="flex-grow" />
-        <Link to={`/chat/${friend._id}`} className="btn btn-outline w-full mt-auto">
+        <Link to={`/chat/${friend._id}`} className="btn btn-outline w-full">
           Nhắn tin
         </Link>
       </div>

@@ -8,7 +8,7 @@ function NoNotificationsFound() {
       </div>
       <h3 className="text-lg font-semibold mb-2">Chưa có thông báo nào</h3>
       <p className="text-base-content opacity-70 max-w-md">
-        Khi bạn nhận được lời mời kết bạn hoặc tin nhắn, chúng sẽ xuất hiện tại đây.
+        Khi bạn nhận được yêu cầu kết bạn hoặc tin nhắn, chúng sẽ hiển thị ở đây.
       </p>
     </div>
   );

@@ -1,9 +1,4 @@
 export const THEMES = [
-  // {
-  //   name: "movieticket",
-  //   label: "Movie Ticket",
-  //   colors: ["#0f172a", "#fbbf24", "#f87171", "#f1f5f9"],
-  // },
   {
     name: "light",
     label: "Light",
