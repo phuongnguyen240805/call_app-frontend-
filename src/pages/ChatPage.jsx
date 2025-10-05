@@ -33,7 +33,7 @@ const ChatPage = () => {
   const { data: tokenData } = useQuery({
     queryKey: ["streamToken"],
     queryFn: getStreamToken,
-    enabled: !!authUser, // this will run only when authUser is available
+    enabled: !!authUser, // chỉ chạy khi authUser đã có
   });
 
   useEffect(() => {
@@ -41,7 +41,7 @@ const ChatPage = () => {
       if (!tokenData?.token || !authUser) return;
 
       try {
-        console.log("Initializing stream chat client...");
+        console.log("Đang khởi tạo client chat stream...");
 
         const client = StreamChat.getInstance(STREAM_API_KEY);
 
@@ -57,9 +57,9 @@ const ChatPage = () => {
         //
         const channelId = [authUser._id, targetUserId].sort().join("-");
 
-        // you and me
-        // if i start the chat => channelId: [myId, yourId]
-        // if you start the chat => channelId: [yourId, myId]  => [myId,yourId]
+        // bạn và tôi
+        // nếu tôi bắt đầu chat => channelId: [myId, yourId]
+        // nếu bạn bắt đầu chat => channelId: [yourId, myId]  => [myId,yourId]
 
         const currChannel = client.channel("messaging", channelId, {
           members: [authUser._id, targetUserId],
@@ -70,8 +70,8 @@ const ChatPage = () => {
         setChatClient(client);
         setChannel(currChannel);
       } catch (error) {
-        console.error("Error initializing chat:", error);
-        toast.error("Could not connect to chat. Please try again.");
+        console.error("Lỗi khi khởi tạo chat:", error);
+        toast.error("Không thể kết nối tới chat. Vui lòng thử lại.");
       } finally {
         setLoading(false);
       }
@@ -85,10 +85,10 @@ const ChatPage = () => {
       const callUrl = `${window.location.origin}/call/${channel.id}`;
 
       channel.sendMessage({
-        text: `I've started a video call. Join me here: ${callUrl}`,
+        text: `Tôi vừa bắt đầu một cuộc gọi video. Tham gia tại đây: ${callUrl}`,
       });
 
-      toast.success("Video call link sent successfully!");
+      toast.success("Đã gửi liên kết cuộc gọi video thành công!");
     }
   };
 
@@ -101,9 +101,9 @@ const ChatPage = () => {
           <div className="w-full relative">
             <CallButton handleVideoCall={handleVideoCall} />
             <Window>
-              <ChannelHeader />
-              <MessageList />
-              <MessageInput focus />
+              <ChannelHeader title="Tin nhắn" />
+              <MessageList noGroupByUser={false} />
+              <MessageInput focus placeholder="Nhập tin nhắn..." />
             </Window>
           </div>
           <Thread />

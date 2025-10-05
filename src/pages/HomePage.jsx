@@ -52,10 +52,10 @@ const HomePage = () => {
     <div className="p-4 sm:p-6 lg:p-8">
       <div className="container mx-auto space-y-10">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">Your Friends</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">Bạn bè của bạn</h2>
           <Link to="/notifications" className="btn btn-outline btn-sm">
             <UsersIcon className="mr-2 size-4" />
-            Friend Requests
+            Lời mời kết bạn
           </Link>
         </div>
 
@@ -77,9 +77,9 @@ const HomePage = () => {
           <div className="mb-6 sm:mb-8">
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
               <div>
-                <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">Meet New Learners</h2>
+                <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">Kết nối người học mới</h2>
                 <p className="opacity-70">
-                  Discover perfect language exchange partners based on your profile
+                  Khám phá những người bạn trao đổi ngôn ngữ phù hợp dựa trên hồ sơ của bạn
                 </p>
               </div>
             </div>
@@ -91,9 +91,9 @@ const HomePage = () => {
             </div>
           ) : recommendedUsers.length === 0 ? (
             <div className="card bg-base-200 p-6 text-center">
-              <h3 className="font-semibold text-lg mb-2">No recommendations available</h3>
+              <h3 className="font-semibold text-lg mb-2">Không có gợi ý nào</h3>
               <p className="text-base-content opacity-70">
-                Check back later for new language partners!
+                Hãy quay lại sau để tìm bạn trao đổi ngôn ngữ mới!
               </p>
             </div>
           ) : (
@@ -123,21 +123,21 @@ const HomePage = () => {
                         </div>
                       </div>
 
-                      {/* Languages with flags */}
+                      {/* Ngôn ngữ với cờ */}
                       <div className="flex flex-wrap gap-1.5">
                         <span className="badge badge-secondary">
                           {getLanguageFlag(user.nativeLanguage)}
-                          Native: {capitialize(user.nativeLanguage)}
+                          Bản ngữ: {capitialize(user.nativeLanguage)}
                         </span>
                         <span className="badge badge-outline">
                           {getLanguageFlag(user.learningLanguage)}
-                          Learning: {capitialize(user.learningLanguage)}
+                          Đang học: {capitialize(user.learningLanguage)}
                         </span>
                       </div>
 
                       {user.bio && <p className="text-sm opacity-70">{user.bio}</p>}
 
-                      {/* Action button */}
+                      {/* Nút hành động */}
                       <button
                         className={`btn w-full mt-2 ${hasRequestBeenSent ? "btn-disabled" : "btn-primary"
                           } `}
@@ -147,12 +147,12 @@ const HomePage = () => {
                         {hasRequestBeenSent ? (
                           <>
                             <CheckCircleIcon className="size-4 mr-2" />
-                            Request Sent
+                            Đã gửi lời mời
                           </>
                         ) : (
                           <>
                             <UserPlusIcon className="size-4 mr-2" />
-                            Send Friend Request
+                            Gửi lời mời kết bạn
                           </>
                         )}
                       </button>

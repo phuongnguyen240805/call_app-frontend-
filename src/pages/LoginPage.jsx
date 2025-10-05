@@ -9,18 +9,6 @@ const LoginPage = () => {
     password: "",
   });
 
-  // This is how we did it at first, without using our custom hook
-  // const queryClient = useQueryClient();
-  // const {
-  //   mutate: loginMutation,
-  //   isPending,
-  //   error,
-  // } = useMutation({
-  //   mutationFn: login,
-  //   onSuccess: () => queryClient.invalidateQueries({ queryKey: ["authUser"] }),
-  // });
-
-  // This is how we did it using our custom hook - optimized version
   const { isPending, error, loginMutation } = useLogin();
 
   const handleLogin = (e) => {
@@ -34,17 +22,17 @@ const LoginPage = () => {
       data-theme="forest"
     >
       <div className="border border-primary/25 flex flex-col lg:flex-row w-full max-w-5xl mx-auto bg-base-100 rounded-xl shadow-lg overflow-hidden">
-        {/* LOGIN FORM SECTION */}
+        {/* PHẦN FORM ĐĂNG NHẬP */}
         <div className="w-full lg:w-1/2 p-4 sm:p-8 flex flex-col">
           {/* LOGO */}
           <div className="mb-4 flex items-center justify-start gap-2">
             <ShipWheelIcon className="size-9 text-primary" />
             <span className="text-3xl font-bold font-mono bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary  tracking-wider">
-              Streamify
+              Call App
             </span>
           </div>
 
-          {/* ERROR MESSAGE DISPLAY */}
+          {/* HIỂN THỊ LỖI */}
           {error && (
             <div className="alert alert-error mb-4">
               <span>{error.response.data.message}</span>
@@ -55,9 +43,9 @@ const LoginPage = () => {
             <form onSubmit={handleLogin}>
               <div className="space-y-4">
                 <div>
-                  <h2 className="text-xl font-semibold">Welcome Back</h2>
+                  <h2 className="text-xl font-semibold">Chào mừng trở lại</h2>
                   <p className="text-sm opacity-70">
-                    Sign in to your account to continue your language journey
+                    Đăng nhập để tiếp tục hành trình học ngôn ngữ của bạn
                   </p>
                 </div>
 
@@ -78,7 +66,7 @@ const LoginPage = () => {
 
                   <div className="form-control w-full space-y-2">
                     <label className="label">
-                      <span className="label-text">Password</span>
+                      <span className="label-text">Mật khẩu</span>
                     </label>
                     <input
                       type="password"
@@ -94,18 +82,18 @@ const LoginPage = () => {
                     {isPending ? (
                       <>
                         <span className="loading loading-spinner loading-xs"></span>
-                        Signing in...
+                        Đang đăng nhập...
                       </>
                     ) : (
-                      "Sign In"
+                      "Đăng nhập"
                     )}
                   </button>
 
                   <div className="text-center mt-4">
                     <p className="text-sm">
-                      Don't have an account?{" "}
+                      Chưa có tài khoản?{" "}
                       <Link to="/signup" className="text-primary hover:underline">
-                        Create one
+                        Đăng ký ngay
                       </Link>
                     </p>
                   </div>
@@ -115,18 +103,18 @@ const LoginPage = () => {
           </div>
         </div>
 
-        {/* IMAGE SECTION */}
+        {/* PHẦN ẢNH */}
         <div className="hidden lg:flex w-full lg:w-1/2 bg-primary/10 items-center justify-center">
           <div className="max-w-md p-8">
-            {/* Illustration */}
+            {/* Minh họa */}
             <div className="relative aspect-square max-w-sm mx-auto">
-              <img src="/i.png" alt="Language connection illustration" className="w-full h-full" />
+              <img src="/i.png" alt="Minh họa kết nối ngôn ngữ" className="w-full h-full" />
             </div>
 
             <div className="text-center space-y-3 mt-6">
-              <h2 className="text-xl font-semibold">Connect with language partners worldwide</h2>
+              <h2 className="text-xl font-semibold">Kết nối với bạn bè học ngôn ngữ trên toàn thế giới</h2>
               <p className="opacity-70">
-                Practice conversations, make friends, and improve your language skills together
+                Luyện tập hội thoại, kết bạn và cùng nhau nâng cao kỹ năng ngôn ngữ của bạn
               </p>
             </div>
           </div>

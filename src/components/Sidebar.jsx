@@ -14,7 +14,7 @@ const Sidebar = () => {
         <Link to="/" className="flex items-center gap-2.5">
           <ShipWheelIcon className="size-9 text-primary" />
           <span className="text-3xl font-bold font-mono bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary  tracking-wider">
-            Streamify
+            Call App
           </span>
         </Link>
       </div>
@@ -26,7 +26,7 @@ const Sidebar = () => {
             }`}
         >
           <HomeIcon className="size-5 text-base-content opacity-70" />
-          <span>Home</span>
+          <span>Trang chủ</span>
         </Link>
 
         <Link
@@ -35,7 +35,7 @@ const Sidebar = () => {
             }`}
         >
           <UsersIcon className="size-5 text-base-content opacity-70" />
-          <span>Friends</span>
+          <span>Bạn bè</span>
         </Link>
 
         <Link
@@ -44,23 +44,23 @@ const Sidebar = () => {
             }`}
         >
           <BellIcon className="size-5 text-base-content opacity-70" />
-          <span>Notifications</span>
+          <span>Thông báo</span>
         </Link>
       </nav>
 
-      {/* USER PROFILE SECTION */}
+      {/* PHẦN HỒ SƠ NGƯỜI DÙNG */}
       <div className="p-4 border-t border-base-300 mt-auto">
         <div className="flex items-center gap-3">
           <div className="avatar">
             <div className="w-10 rounded-full">
-              <img src={authUser?.profilePic} alt="User Avatar" />
+              <img src={authUser?.profilePic} alt="Ảnh đại diện người dùng" />
             </div>
           </div>
           <div className="flex-1">
             <p className="font-semibold text-sm">{authUser?.fullName}</p>
             <p className="text-xs text-success flex items-center gap-1">
               <span className="size-2 rounded-full bg-success inline-block" />
-              Online
+              Đang hoạt động
             </p>
           </div>
         </div>
